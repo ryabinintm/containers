@@ -11,7 +11,7 @@ public:
  void insert(int pos, T value) override;
  void erase(int pos) override;
  int size() override;
- T operator[](int index);
+ T operator[](int index) override;
  void print() override;
 private:
   int m_size;

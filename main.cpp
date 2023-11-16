@@ -1,19 +1,23 @@
 #include "akavector.h"
+#include "akalist.h"
 #include <iostream>
 
 template<typename T>
 void example_run(Container<T> &container);
 
 int main() {
-    //==================== Serial container ==================== 
+    // Serial container
     std::cout << "Serial container: Akavector" << std::endl;
     // Creating a container object for storing int objects
     Akavector<int> akavector;
     example_run(akavector);
     std::cout << std::endl;
 
-    //=================== List-type container ================== 
+    // List-type container
     std::cout << "List-type container: Akalist" << std::endl;
+    // Creating a container object for storing int objects
+    Akalist<int> akalist;
+    example_run(akalist);
   return 0;
 }
 

@@ -8,5 +8,6 @@ public:
  virtual void insert(int pos, T value) = 0;
  virtual void erase(int pos) = 0;
  virtual int size() = 0;
+ virtual T operator[](int index) = 0;
  virtual void print() = 0;
 };
