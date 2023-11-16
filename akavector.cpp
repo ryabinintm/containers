@@ -48,14 +48,6 @@ T Akavector<T>::operator[](int index) {
 }
 
 template<typename T>
-void Akavector<T>::info() {
-  print();
-  std::cout << "size:  " << m_size << std::endl;
-  std::cout << "capacity: " << capacity << std::endl;
-  std::cout << "----------" << std::endl;
-}
-
-template<typename T>
 void Akavector<T>::print() {
   bool is_common_first = false;
   for (int i = 0; i < m_size; i++) {
