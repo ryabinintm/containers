@@ -14,6 +14,13 @@ public:
   T operator[](int index) override;
   void print() override;
 private:
+  struct Node {
+    T data;
+    Node *next;
+    Node(T d) : data(d), next(nullptr) {
+    }
+  };
+  Node *head;
   int m_size;
 };
 

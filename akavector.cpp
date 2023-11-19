@@ -49,13 +49,13 @@ T Akavector<T>::operator[](int index) {
 
 template<typename T>
 void Akavector<T>::print() {
-  bool is_common_first = false;
+  bool is_comma_first = false;
   for (int i = 0; i < m_size; i++) {
-    if (is_common_first) {
+    if (is_comma_first) {
       std::cout << ", ";
     }
     std::cout << values[i];
-    is_common_first = true;
+    is_comma_first = true;
   }
   std::cout << std::endl;
 }
