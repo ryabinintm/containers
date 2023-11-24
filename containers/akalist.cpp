@@ -35,6 +35,10 @@ void Akalist<T>::push_back(T value) {
 
 template<typename T>
 void Akalist<T>::insert(int pos, T value) {
+  if (pos < 0 || static_cast<size_t>(pos) >= m_size) {
+    std::cerr << "Out of range" << std::endl;
+    exit(0);
+  }
   Node *new_node = new Node(value);
   if (pos == 0) {
     new_node->next = head;
@@ -52,6 +56,10 @@ void Akalist<T>::insert(int pos, T value) {
 
 template<typename T>
 void Akalist<T>::erase(int pos) {
+  if (pos< 0 || static_cast<size_t>(pos) >= m_size) {
+    std::cerr << "Out of range" << std::endl;
+    exit(0);
+  }
   Node *temp = head;
   if (pos == 0) {
     head = temp->next;
@@ -68,12 +76,16 @@ void Akalist<T>::erase(int pos) {
 }
 
 template<typename T>
-int Akalist<T>::size() {
+size_t Akalist<T>::size() {
   return m_size;
 }
 
 template<typename T>
 T Akalist<T>::operator[](int index) {
+  if (index < 0 || static_cast<size_t>(index) >= m_size) {
+    std::cerr << "Out of range" << std::endl;
+    exit(0);
+  }
   Node *temp = head;
   if (index != 0) {
     for (int i = 0; i < index - 1; i++) {

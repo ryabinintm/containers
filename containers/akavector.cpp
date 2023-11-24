@@ -31,26 +31,34 @@ void Akavector<T>::insert(int pos, T value) {
 
 template<typename T>
 void Akavector<T>::erase(int pos) {
-  for (int i = pos; i < m_size; i++) {
+  if (pos < 0 || static_cast<size_t>(pos) >= m_size) {
+    std::cerr << "Out of range" << std::endl;
+    exit(0);
+  }
+  for (size_t i = pos; i < m_size; i++) {
     values[i] = values[i + 1];
   }
   m_size--;
 }
 
 template<typename T>
-int Akavector<T>::size() {
+size_t Akavector<T>::size() {
   return m_size;
 }
 
 template<typename T>
 T Akavector<T>::operator[](int index) {
+  if (index < 0 || static_cast<size_t>(index) >= m_size) {
+    std::cerr << "Out of range" << std::endl;
+    exit(0);
+  }
   return values[index];
 }
 
 template<typename T>
 void Akavector<T>::print() {
   bool is_comma_first = false;
-  for (int i = 0; i < m_size; i++) {
+  for (size_t i = 0; i < m_size; i++) {
     if (is_comma_first) {
       std::cout << ", ";
     }
@@ -65,7 +73,7 @@ void Akavector<T>::check_capacity() {
   if (m_size == capacity) {
     capacity *= 2;
     T *temp = new T[capacity];
-    for (int i = 0; i < m_size; i++) {
+    for (size_t i = 0; i < m_size; i++) {
       temp[i] = values[i];
     }
     delete[] values;

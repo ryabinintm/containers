@@ -69,4 +69,17 @@ void example_run(Container<T> &container)
   // Displaying the contents of the container on the screen
   // Expected result: 10, 0, 1, 3, 20, 5, 7, 8, 9, 30
   container.print();
+
+
+
+
+  std::cout << "Additions:" << std::endl;
+  // Adding ten elements to the container (0, 1 ... 9)
+  for (int i = 0; i < 10; i++) {
+    container.push_back(i);
+  }
+
+  // Displaying the contents of the container on the screen
+  // Expected result: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+  container.print();
 }
