@@ -19,6 +19,7 @@ int main() {
     // Creating a container object for storing int objects
     Akalist<int> akalist;
     example_run(akalist);
+
   return 0;
 }
 
@@ -32,7 +33,7 @@ void example_run(Container<T> &container)
 
   // Displaying the contents of the container on the screen
   // Expected result: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-  container.print();
+  std::cout << container.print() << std::endl;
 
   // Displaying the container size on the screen
   // Expected result: 10
@@ -45,14 +46,14 @@ void example_run(Container<T> &container)
 
   // Displaying the contents of the container on the screen
   // Expected result: 0, 1, 3, 5, 7, 8, 9
-  container.print();
+  std::cout << container.print() << std::endl;
 
   // Adding element 10 to the beginning of the container
   container.insert(0, 10);
 
   // Displaying the contents of the container on the screen
   // Expected result: 10, 0, 1, 3, 5, 7, 8, 9
-  container.print();
+  std::cout << container.print() << std::endl;
 
   // Adding an element to the middle of the container
   // Expected result: 10, 0, 1, 3, 20, 5, 7, 8, 9
@@ -61,14 +62,14 @@ void example_run(Container<T> &container)
 
   // Displaying the contents of the container on the screen
   // Expected result: 10, 0, 1, 3, 20, 5, 7, 8, 9
-  container.print();
+  std::cout << container.print() << std::endl;
 
   // Adding element 30 to the end of the container
   container.push_back(30);
 
   // Displaying the contents of the container on the screen
   // Expected result: 10, 0, 1, 3, 20, 5, 7, 8, 9, 30
-  container.print();
+  std::cout << container.print() << std::endl;
 
 
 
@@ -81,5 +82,5 @@ void example_run(Container<T> &container)
 
   // Displaying the contents of the container on the screen
   // Expected result: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-  container.print();
+  std::cout << container.print() << std::endl;
 }

@@ -1,9 +1,34 @@
-#include <iostream>
+#include <sstream>
+#include <string>
 
 template<typename T>
 Akalist<T>::Akalist()
     : head(nullptr)
     , m_size(0) {
+}
+
+template<typename T>
+Akalist<T>::Akalist(const Akalist<T> &other)
+    : head(nullptr)
+    , m_size(other.m_size){
+  Node *current = head;
+  Node *other_current = other.head;
+
+}
+
+template<typename T>
+Akalist<T>::Akalist(Akalist<T> &&other) {
+
+}
+
+template<typename T>
+Akalist<T> &Akalist<T>::operator=(const Akalist<T> &other) {
+  return *this;
+}
+
+template<typename T>
+Akalist<T> &Akalist<T>::operator=(Akalist<T> &&other) {
+  return *this;
 }
 
 template<typename T>
@@ -19,7 +44,7 @@ Akalist<T>::~Akalist() {
 }
 
 template<typename T>
-void Akalist<T>::push_back(T value) {
+void Akalist<T>::push_back(const T &value) {
   Node *new_node = new Node(value);
   if (head == nullptr) {
     head = new_node;
@@ -34,9 +59,8 @@ void Akalist<T>::push_back(T value) {
 }
 
 template<typename T>
-void Akalist<T>::insert(int pos, T value) {
+void Akalist<T>::insert(int pos, const T &value) {
   if (pos < 0 || static_cast<size_t>(pos) >= m_size) {
-    std::cerr << "Out of range" << std::endl;
     exit(0);
   }
   Node *new_node = new Node(value);
@@ -57,7 +81,6 @@ void Akalist<T>::insert(int pos, T value) {
 template<typename T>
 void Akalist<T>::erase(int pos) {
   if (pos< 0 || static_cast<size_t>(pos) >= m_size) {
-    std::cerr << "Out of range" << std::endl;
     exit(0);
   }
   Node *temp = head;
@@ -83,7 +106,6 @@ size_t Akalist<T>::size() {
 template<typename T>
 T Akalist<T>::operator[](int index) {
   if (index < 0 || static_cast<size_t>(index) >= m_size) {
-    std::cerr << "Out of range" << std::endl;
     exit(0);
   }
   Node *temp = head;
@@ -96,16 +118,17 @@ T Akalist<T>::operator[](int index) {
 }
 
 template<typename T>
-void Akalist<T>::print() {
+std::string Akalist<T>::print() {
+  std::ostringstream oss;
   Node *temp = head;
   bool is_comma_first = false;
   while (temp != nullptr) {
     if (is_comma_first) {
-      std::cout << ", ";
+      oss << ", ";
     }
-    std::cout << temp->data;
+    oss << temp->data;
     temp = temp->next;
     is_comma_first = true;
   }
-  std::cout << std::endl;
+  return oss.str();
 }
