@@ -132,10 +132,8 @@ T Akalist<T>::operator[](int index) {
     exit(0);
   }
   Node *temp = head;
-  if (index != 0) {
-    for (int i = 0; i < index - 1; i++) {
-      temp = temp->next;
-    }
+  for (int i = 0; i < index; i++) {
+    temp = temp->next;
   }
   return temp->data;
 }
