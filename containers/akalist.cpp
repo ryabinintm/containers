@@ -8,26 +8,49 @@ Akalist<T>::Akalist()
 }
 
 template<typename T>
-Akalist<T>::Akalist(const Akalist<T> &other)
-    : head(nullptr)
-    , m_size(other.m_size){
-  Node *current = head;
-  Node *other_current = other.head;
-
+Akalist<T>::Akalist(const Akalist<T> &other) {
+  if (other.head == nullptr) {
+    head = nullptr;
+    m_size = 0;
+  } else {
+    head = new Node(other.head->data);
+    Node *current = head;
+    Node *other_current = other.head->next;
+    while (other.current != nullptr) {
+      current->next = new Node(other_current->data);
+      current = current->next;
+      other_current = other_current->next;
+    }
+    m_size = other.m_size;
+  }
 }
 
 template<typename T>
-Akalist<T>::Akalist(Akalist<T> &&other) {
-
+Akalist<T>::Akalist(Akalist<T> &&other)
+    : head(other.head)
+    , m_size(other.m_size) {
+  other.head = nullptr;
+  other.m_size = 0;
 }
 
 template<typename T>
 Akalist<T> &Akalist<T>::operator=(const Akalist<T> &other) {
+  if (this != &other) {
+    Akalist<T> temp(other);
+    std::swap(head, temp.head);
+  }
   return *this;
 }
 
 template<typename T>
 Akalist<T> &Akalist<T>::operator=(Akalist<T> &&other) {
+  if (this != &other) {
+    delete head;
+    head = other.head;
+    other.head = nullptr;
+    m_size = other.m_size;
+    other.m_size = 0;
+  }
   return *this;
 }
 
